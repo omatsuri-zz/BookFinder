@@ -1,0 +1,104 @@
+﻿
+@{
+    ViewData["Title"] = "Dashboard";
+    Layout = "~/Views/Layout/Layout.cshtml";
+}
+
+<div class="card">
+    <div class="card-body">
+        <h4 class="card-title">Book</h4>
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#Modal" onclick="clearTextBox();">Add</button>
+        <br />
+        <table id="BookData" data-toggle="table" data-sort-name="stargazers_count" data-height="280" data-mobile-responsive="true" data-sort-order="desc" class="table">
+            <thead>
+                <tr>
+                    <th> ISBN </th>
+                    <th data-field="Title" data-sortable="true"> Title </th>
+                    <th data-field="Author" data-sortable="true"> Author </th>
+                    <th> Publisher </th>
+                    <th> Published </th>
+                    <th> URL </th>
+                    <th data-field="Action" data-sortable="true"> Action </th>
+                </tr>
+            </thead>
+            <tbody class="BookDataTable"></tbody>
+        </table>
+    </div>
+</div>
+
+
+<div class="modal fade" id="Modal" role="dialog">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Form Book</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form method="post" action="/bookfinders/insert" enctype="multipart/form-data">
+                    <div class="form-group" hidden="hidden">
+                        <label for="ID">ID</label>
+                        <input type="hidden" class="form-control" id="Id" placeholder=" ID" name="Id">
+                    </div>
+                    <div class="form-group">
+                        <label for="ISBN">ISBN</label>
+                        <input type="text" class="form-control" name="ISBN" id="ISBN" placeholder="ISBN" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Title">Title</label>
+                        <input type="text" class="form-control" name="Title" id="Title" placeholder="Title" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Author">Author</label>
+                        <input type="text" class="form-control" name="Author" id="Author" placeholder="Author" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Publisher">Publisher</label>
+                        <input type="text" class="form-control" name="Publisher" id="Publisher" placeholder="Publisher" />
+                    </div>
+                    <div class="form-group">
+                        <label for="Published">Published</label>
+                        <input type="date" class="form-control" name="Published" id="Published" placeholder="Published" />
+                    </div>
+                    <div class="form-group">
+                        <label for="file">Buku</label>
+                        <input type="file" name="file" id="file" />
+                    </div>
+                    <input type="submit" value="submit" />
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" id="Add" onclick="Add();">Add</button>
+                <button type="button" class="btn btn-primary" id="Update" style="display:none;" onclick="Update();">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js "></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+    <script src="~/js/app.js"></script>
+    <script src="~/Scripts/BookFinder.js"></script>
+    <script src="~/js/moment.js"></script>
+
+
+    @*<script src="~/assets/libs/jquery/dist/jquery.min.js"></script>*@
+    @*<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/momentjs/latest/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/daterangepicker/daterangepicker.css" />*@
+}
